@@ -17,15 +17,18 @@ jobs:
               - name: Checkout
                 uses: actions/checkout@v6
 
-              - name: Se configura JDK 17 (Temurin)
+              - name: Se configura JDK 25 (Temurin)
                 uses: actions/setup-java@v5
                 with:
                   distribution: temurin
-                  java-version: "17"
+                  java-version: "25"
  
               - name: Asegura que gradlew sea ejecutable
                 run: chmod +x ./gradlew
 
               - name: Compilación
                 run: ./gradlew compileJava -no-daemon
+
+              - name: Pruebas unitarias
+                run: ./gradlew test --no-daemon  
            
